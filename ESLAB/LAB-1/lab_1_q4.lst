@@ -1,0 +1,187 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; program to reverse the array
+    2 00000000                 AREA             RESET, DATA, READONLY
+    3 00000000                 EXPORT           __Vectors
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0X10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             mycode, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         Reset_Handler
+   12 00000000 480C            LDR              R0, =SRC    ; storing the addre
+                                                            ss of src
+   13 00000002 F04F 060A       MOV              R6, #10     ; r6 = 10 acts as c
+                                                            ounter
+   14 00000006 F04F 0401       LDR              R4, =1      ; r4 = 1
+   15 0000000A         
+   16 0000000A         ; this is for storing the data into the SRC memory locat
+                       ion..
+   17 0000000A 6004    LOOP    STR              R4, [R0]    ; storing the conte
+                                                            nts of R4 to the lo
+                                                            cation pointed by t
+                                                            he R0 or SRC
+   18 0000000C F104 0401       ADD              R4, #1      ; incrementing the 
+                                                            R4
+   19 00000010 F100 0004       ADD              R0, #4      ; adding 4 as to go
+                                                             on the next locati
+                                                            on
+   20 00000014 3E01            SUBS             R6, #1      ; we are using the 
+                                                            SUBS because we don
+                                                            t have to compare t
+                                                            he R6 to 0, when R6
+                                                             becomes zero statu
+                                                            s flags changes and
+                                                             normally BNE comma
+                                                            nd checks the statu
+                                                            s flag and when sta
+                                                            tus flag becomes ze
+                                                            ro BNE end the loop
+                                                            .
+   21 00000016 D1F8            BNE              LOOP
+   22 00000018         
+   23 00000018 4806            LDR              R0, =SRC    ; storing the initi
+                                                            al location of SRC
+   24 0000001A 4906            LDR              R1, =SRC    ; initiallly storin
+                                                            g the initial locat
+                                                            ion of SRC
+   25 0000001C F101 0124       ADD              R1, #36     ; now R1 is pointin
+                                                            g to the last locat
+                                                            ion of SRC..
+   26 00000020 F04F 0505       MOV              R5, #5      ; acting as a count
+                                                            er
+   27 00000024         
+   28 00000024         
+   29 00000024         ; for reversing the array..
+   30 00000024 6802    UP      LDR              R2,[R0]
+   31 00000026 680B            LDR              R3, [R1]
+   32 00000028 600A            STR              R2, [R1]
+   33 0000002A 6003            STR              R3, [R0]
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   34 0000002C 3D01            SUBS             R5, #1
+   35 0000002E D1F9            BNE              UP
+   36 00000030         STOP
+   37 00000030 E7FE            B                STOP
+   38 00000032 00 00 00000000 
+              00000000 
+              00000000         AREA             mydata, DATA, READWRITE ; we ca
+                                                            nnot store any numb
+                                                            er or anything in D
+                                                            ATA memory, we need
+                                                             to manually add it
+                                                            ..
+   39 00000000 00000000 
+                       SRC     DCD              0
+   40 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\lab_1_
+q4.d -o.\lab_1_q4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\lab_1_q4.lst LAB_1_Q
+4.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 2 in file LAB_1_Q4.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file LAB_1_Q4.s
+   Uses
+      At line 3 in file LAB_1_Q4.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 17 in file LAB_1_Q4.s
+   Uses
+      At line 21 in file LAB_1_Q4.s
+Comment: LOOP used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file LAB_1_Q4.s
+   Uses
+      At line 6 in file LAB_1_Q4.s
+      At line 10 in file LAB_1_Q4.s
+
+STOP 00000030
+
+Symbol: STOP
+   Definitions
+      At line 36 in file LAB_1_Q4.s
+   Uses
+      At line 37 in file LAB_1_Q4.s
+Comment: STOP used once
+UP 00000024
+
+Symbol: UP
+   Definitions
+      At line 30 in file LAB_1_Q4.s
+   Uses
+      At line 35 in file LAB_1_Q4.s
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 8 in file LAB_1_Q4.s
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+SRC 00000000
+
+Symbol: SRC
+   Definitions
+      At line 39 in file LAB_1_Q4.s
+   Uses
+      At line 12 in file LAB_1_Q4.s
+      At line 23 in file LAB_1_Q4.s
+      At line 24 in file LAB_1_Q4.s
+
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 38 in file LAB_1_Q4.s
+   Uses
+      None
+Comment: mydata unused
+2 symbols
+342 symbols in table

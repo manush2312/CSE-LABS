@@ -1,0 +1,82 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             Mycode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 F04F 000A       MOV              R0, #10
+   13 00000004 F04F 0103       MOV              R1, #3
+   14 00000008 EBA0 0001       SUB              R0,R1
+   15 0000000C E7FE    STOP    B                STOP
+   16 0000000E                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\lab_1_
+question_3.d -o.\lab_1_question_3.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\
+Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\lab_
+1_question_3.lst LAB_1_Question_3.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file LAB_1_Question_3.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file LAB_1_Question_3.s
+   Uses
+      At line 2 in file LAB_1_Question_3.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Mycode 00000000
+
+Symbol: Mycode
+   Definitions
+      At line 7 in file LAB_1_Question_3.s
+   Uses
+      None
+Comment: Mycode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file LAB_1_Question_3.s
+   Uses
+      At line 5 in file LAB_1_Question_3.s
+      At line 9 in file LAB_1_Question_3.s
+
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 15 in file LAB_1_Question_3.s
+   Uses
+      At line 15 in file LAB_1_Question_3.s
+Comment: STOP used once
+3 symbols
+336 symbols in table

@@ -1,0 +1,135 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0X10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             Mycode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 4802            LDR              R0, =OP1
+   12 00000002 6803            LDR              R3, [R0]
+   13 00000004 4902            LDR              R1, =OP2
+   14 00000006 600B            STR              R3, [R1]
+   15 00000008 E7FE    STOP    B                STOP
+   16 0000000A 00 00 00000000 
+              00000000         AREA             MDATA, DATA, READONLY
+   17 00000000 00001678 
+                       OP1     DCD              0x1678
+   18 00000004                 AREA             mydata, DATA, READWRITE
+   19 00000000 00000000 
+                       OP2     DCD              0x00
+   20 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\lab_1_
+question_1.d -o.\lab_1_question_1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\
+Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\lab_
+1_question_1.lst LAB_1_Question_1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file LAB_1_Question_1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file LAB_1_Question_1.s
+   Uses
+      At line 2 in file LAB_1_Question_1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Mycode 00000000
+
+Symbol: Mycode
+   Definitions
+      At line 7 in file LAB_1_Question_1.s
+   Uses
+      None
+Comment: Mycode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file LAB_1_Question_1.s
+   Uses
+      At line 5 in file LAB_1_Question_1.s
+      At line 9 in file LAB_1_Question_1.s
+
+STOP 00000008
+
+Symbol: STOP
+   Definitions
+      At line 15 in file LAB_1_Question_1.s
+   Uses
+      At line 15 in file LAB_1_Question_1.s
+Comment: STOP used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MDATA 00000000
+
+Symbol: MDATA
+   Definitions
+      At line 16 in file LAB_1_Question_1.s
+   Uses
+      None
+Comment: MDATA unused
+OP1 00000000
+
+Symbol: OP1
+   Definitions
+      At line 17 in file LAB_1_Question_1.s
+   Uses
+      At line 11 in file LAB_1_Question_1.s
+Comment: OP1 used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+OP2 00000000
+
+Symbol: OP2
+   Definitions
+      At line 19 in file LAB_1_Question_1.s
+   Uses
+      At line 13 in file LAB_1_Question_1.s
+Comment: OP2 used once
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 18 in file LAB_1_Question_1.s
+   Uses
+      None
+Comment: mydata unused
+2 symbols
+342 symbols in table
