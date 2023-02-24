@@ -1,0 +1,156 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 480B            LDR              R0, =N1     ; storing the addre
+                                                            ss of N1
+   12 00000002 6801            LDR              R1 , [R0]   ; R1 = 21
+   13 00000004 480B            LDR              R0, =N2
+   14 00000006 6802            LDR              R2,[R0]     ; R2 = 7
+   15 00000008 F04F 0300       MOV              R3, #0      ; R3 = 0 this will 
+                                                            store quotient
+   16 0000000C F04F 0400       MOV              R4, #0      ; R4 = 0 this will 
+                                                            store remainder
+   17 00000010 4E09            LDR              R6, =DST
+   18 00000012         
+   19 00000012 EBA1 0102 
+                       UP      SUB              R1,R1,R2
+   20 00000016 F103 0301       ADD              R3,#1       ; incrementing the 
+                                                            quotient by one 
+   21 0000001A 4291            CMP              R1,R2
+   22 0000001C DAF9            BGE              UP
+   23 0000001E F846 3B04       STR              R3, [R6], #4
+   24 00000022 6031            STR              R1, [R6]
+   25 00000024         STOP
+   26 00000024 E7FE            B                STOP
+   27 00000026         
+   28 00000026         
+   29 00000026 00 00 00000016 
+                       N1      DCD              22
+   30 0000002C 00000007 
+                       N2      DCD              7
+   31 00000030         
+   32 00000030 00000000 
+              00000000 
+              00000000         AREA             mydata, DATA, READWRITE
+   33 00000000 00000000 
+                       DST     DCD              0
+   34 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\q1.d -
+o.\q1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=.\q1.lst q1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file q1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file q1.s
+   Uses
+      At line 2 in file q1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+N1 00000028
+
+Symbol: N1
+   Definitions
+      At line 29 in file q1.s
+   Uses
+      At line 11 in file q1.s
+Comment: N1 used once
+N2 0000002C
+
+Symbol: N2
+   Definitions
+      At line 30 in file q1.s
+   Uses
+      At line 13 in file q1.s
+Comment: N2 used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file q1.s
+   Uses
+      At line 5 in file q1.s
+      At line 9 in file q1.s
+
+STOP 00000024
+
+Symbol: STOP
+   Definitions
+      At line 25 in file q1.s
+   Uses
+      At line 26 in file q1.s
+Comment: STOP used once
+UP 00000012
+
+Symbol: UP
+   Definitions
+      At line 19 in file q1.s
+   Uses
+      At line 22 in file q1.s
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file q1.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 33 in file q1.s
+   Uses
+      At line 17 in file q1.s
+Comment: DST used once
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 32 in file q1.s
+   Uses
+      None
+Comment: mydata unused
+2 symbols
+343 symbols in table
